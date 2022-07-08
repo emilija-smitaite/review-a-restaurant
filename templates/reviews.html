@@ -2,13 +2,19 @@
 {% block content %}
 
     <h2>Reviews</h2>
-    
-    {% for review in reviews %}
-        {{ review.restaurantID }}<br>
-        {{ review.userID }}<br>
-        {{ review.score }}<br>
-        {{ review.text }}<br>
-        {{ review.date }}<br>
-    {% endfor %}
+     
+    <div class="row">
+        <div class="col s12 m3">
+          <div class="card-panel teal">
+            {% for review in reviews %}
+                {{ review.restaurantID }}<br>
+                {{ review.userID }}<br>
+                {{ review.score }}<br>
+                {{ review.text }}<br>
+                {{ review.date }}<br>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
 
 {% endblock %}

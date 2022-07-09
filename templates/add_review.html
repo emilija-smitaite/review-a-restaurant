@@ -4,7 +4,7 @@
     <h2>Add Review</h2>
 
     <div class="row">
-        <form class="col s12" method="POST" action="">
+        <form class="col s12" method="POST" action="{{ url_for('add_review') }}">
             <div class="row">
                 <div class="input-field col s12">
                     <select id="restaurant_name" name="restaurant_name" class="validate" required>
@@ -15,12 +15,6 @@
                     </select>
                     <label for="restaurant_name">Restaurant Name</label>
                   </div>
-            </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix"></i>
-              <input id="restaurant_name" type="text" class="validate" name="restaurant_name" required>
-              <label for="restaurant_name">Restaurant Name</label>
             </div>
         </div>
             <div class="row">
@@ -44,6 +38,11 @@
                 <input id="date" type="tel" class="validate" name="date" required>
                 <label for="date">Date Visited</label>
             </div>
+        </div>
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit">Add Review
+                <i class="material-icons right"></i>
+            </button>
         </div>
     </form>
     </div>

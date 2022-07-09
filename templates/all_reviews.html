@@ -3,18 +3,25 @@
 
     <h2>Reviews</h2>
      
+    
+        
     <div class="row">
-        <div class="col s12 m3">
-          <div class="card-panel teal">
             {% for review in reviews %}
-                {{ review.restaurantID }}<br>
-                {{ review.userID }}<br>
+            
+            <div class="col s12 m3">
+            <div class="card-panel teal">
+                {{ review.restaurant_name }}<br>
                 {{ review.score }}<br>
-                {{ review.text }}<br>
+                {{ review.review_text }}<br>
                 {{ review.date }}<br>
+                by: {{ review.posted_by }}<br>
+              </div>
+            
+          </div>
             {% endfor %}
           </div>
-        </div>
-      </div>
+          
+        
+      
 
 {% endblock %}

@@ -2,8 +2,20 @@
 {% block content %}
 
     <h2>Add Review</h2>
+
     <div class="row">
         <form class="col s12" method="POST" action="">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select id="restaurant_name" name="restaurant_name" class="validate" required>
+                      <option value="" disabled selected>Pick your restaurant</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label for="restaurant_name">Restaurant Name</label>
+                  </div>
+            </div>
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix"></i>

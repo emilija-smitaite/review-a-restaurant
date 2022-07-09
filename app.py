@@ -19,7 +19,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 @app.route("/all_reviews")
-def reviews():
+def all_reviews():
     reviews = list(mongo.db.reviews.find())
     return render_template("all_reviews.html", reviews=reviews)
 

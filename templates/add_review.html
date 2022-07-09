@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>Add Review</h2>
+    <div class="row">
+        <form class="col s12" method="POST" action="">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix"></i>
+              <input id="restaurant_name" type="text" class="validate" name="restaurant_name">
+              <label for="restaurant_name">Restaurant Name</label>
+            </div>
+            <div class="input-field col s12">
+              <i class="material-icons prefix"></i>
+              <input id="score" type="text" class="validate" name="score">
+              <label for="score">Score</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix"></i>
+                <input id="review_text" type="text" class="validate" name="review_text">
+                <label for="review_text">Review</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix"></i>
+                <input id="date" type="tel" class="validate" name="date">
+                <label for="date">Date Visited</label>
+              </div>
+          </div>
+        </form>
+      </div>
+
+{% endblock %}

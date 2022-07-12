@@ -8,9 +8,13 @@
             <div class="row">
                 <div class="input-field col s12">
                     <select id="restaurant_name" name="restaurant_name" class="validate" required>
-                      <option value="" disabled selected>Pick your restaurant</option>
+                      <option value="" disabled>Pick your restaurant</option>
                         {% for restaurant in restaurants %}
-                            <option value="{{ restaurant.restaurant_name }}">{{ restaurant.restaurant_name }}</option>
+                            {% if restaurant.restaurant_name == review.restaurant_name %}
+                                <option value="{{ restaurant.restaurant_name }}" selected>{{ restaurant.restaurant_name }}</option>
+                            {% else %}
+                                <option value="{{ restaurant.restaurant_name }}">{{ restaurant.restaurant_name }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <label for="restaurant_name">Restaurant Name</label>
@@ -20,7 +24,7 @@
             <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix"></i>
-              <input id="score" type="text" class="validate" name="score" required>
+              <input id="score" type="text" class="validate" name="score" value="{{ review.score }}" required>
               <label for="score">Score</label>
             </div>
             </div>
@@ -28,21 +32,17 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix"></i>
                 <textarea id="review_text" type="text" name="review_text" minlength="5"
-                maxlength="350" class="materialize-textarea validate" required></textarea>
+                maxlength="350" class="materialize-textarea validate" required>{{ review.review_text }}</textarea>
                 <label for="review_text">Review</label>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix"></i>
-                <input id="date" type="tel" class="validate" name="date" required>
-                <label for="date">Date Visited</label>
-            </div>
-        </div>
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit">Edit Review
+            <a class="btn waves-effect waves-light" type="submit">Done
                 <i class="material-icons right"></i>
-            </button>
+            </a>
+            <a class="btn waves-effect waves-light" href="{{ url_for('all_reviews') }}" type="submit">Cancel
+                <i class="material-icons right"></i>
+        </a>
         </div>
     </form>
     </div>

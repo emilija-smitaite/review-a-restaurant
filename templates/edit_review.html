@@ -12,7 +12,7 @@
                         {% for restaurant in restaurants %}
                             {% if restaurant.restaurant_name == review.restaurant_name %}
                                 <option value="{{ restaurant.restaurant_name }}" selected>{{ restaurant.restaurant_name }}</option>
-                            {% else %}
+                            {% else %}S
                                 <option value="{{ restaurant.restaurant_name }}">{{ restaurant.restaurant_name }}</option>
                             {% endif %}
                         {% endfor %}
@@ -37,9 +37,9 @@
             </div>
         </div>
         <div class="row">
-            <a class="btn waves-effect waves-light" type="submit">Done
+            <button class="btn waves-effect waves-light" type="submit">Edit
                 <i class="material-icons right"></i>
-            </a>
+            </button>
             <a class="btn waves-effect waves-light" href="{{ url_for('all_reviews') }}" type="submit">Cancel
                 <i class="material-icons right"></i>
         </a>

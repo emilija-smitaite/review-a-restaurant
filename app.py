@@ -134,6 +134,13 @@ def edit_review(review_id):
         restaurants=restaurants)
 
 
+@app.route("/delete_review/<review_id>")
+def delete_review(review_id):
+    mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
+    flash("Review Successfully Deleted!")
+    return redirect(url_for("all_reviews"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

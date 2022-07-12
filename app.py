@@ -101,8 +101,8 @@ def profile(username):
 def logout():
     # remove user from session cookies
     flash("You have been logged out")
-    session.pop("user")
-    return redirect(url_for("logout"))
+    session.clear()
+    return redirect(url_for("login"))
 
 
 @app.route("/add_review", methods=["GET", "POST"])

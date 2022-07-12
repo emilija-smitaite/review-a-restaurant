@@ -132,6 +132,7 @@ def edit_review(review_id):
         }
         mongo.db.reviews.replace_one({"_id": ObjectId(review_id)}, submit)
         flash("Review Successfully Updated!")
+        return redirect(url_for("all_reviews"))
 
     review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     restaurants = mongo.db.restaurants.find().sort("restaurant_name", 1)

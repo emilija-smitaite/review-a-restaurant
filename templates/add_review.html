@@ -5,6 +5,7 @@
 
     <div class="row">
         <form class="col s12" method="POST" action="{{ url_for('add_review') }}">
+            <!--restaurant name dropdown-->
             <div class="row">
                 <div class="input-field col s12">
                     <select id="restaurant_name" name="restaurant_name" class="validate" required>
@@ -16,28 +17,30 @@
                     <label for="restaurant_name">Restaurant Name</label>
                   </div>
             </div>
-        </div>
+            <!--rating score-->
             <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix"></i>
               <input id="score" type="text" class="validate" name="score" minlength="1" maxlength="1" pattern="^[0-5]{1,1}$" required>
-              <label for="score">Score (1-5)</label>
+              <label for="score">Score (0-5)</label>
             </div>
             </div>
+            <!--review text-->
             <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix"></i>
-                <textarea id="review_text" type="text" name="review_text" minlength="5"
-                maxlength="350" class="materialize-textarea validate" required></textarea>
-                <label for="review_text">Review</label>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix"></i>
+                    <textarea id="review_text" type="text" name="review_text" minlength="5"
+                    maxlength="350" class="materialize-textarea validate" required></textarea>
+                    <label for="review_text">Review</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit">Add Review
-                <i class="material-icons right"></i>
-            </button>
-        </div>
-    </form>
+            <!--submit button-->
+            <div class="row">
+                <button class="btn waves-effect waves-light" type="submit">Add Review
+                    <i class="material-icons right"></i>
+                </button>
+            </div>
+        </form>
     </div>
 
 {% endblock %}

@@ -1,52 +1,48 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-
-    
 <h2 class="center-align white-text">Add Review</h2>
 
-    <div class="row">
-     
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_review') }}">
-            <div class="card-panel white">
-            <!--restaurant name dropdown-->
-            <div class="row">
-                <div class="input-field col s12 black-text">
-                    <select id="restaurant_name" name="restaurant_name" class="validate black-text" required>
-                      <option value="" disabled selected>Pick your restaurant</option>
-                        {% for restaurant in restaurants %}
-                            <option value="{{ restaurant.restaurant_name }}">{{ restaurant.restaurant_name }}</option>
-                        {% endfor %}
-                    </select>
-                    <label for="restaurant_name">Restaurant Name</label>
-                  </div>
-            </div>
-            <!--rating score-->
-            <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix"></i>
-              <input id="score" type="text" class="validate" name="score" minlength="1" maxlength="1" pattern="^[0-5]{1,1}$" required>
-              <label for="score">Score (0-5)</label>
-            </div>
-            </div>
-            <!--review text-->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix"></i>
-                    <textarea id="review_text" name="review_text" minlength="5"
-                    maxlength="350" class="materialize-textarea validate" required></textarea>
-                    <label for="review_text">Review</label>
-                </div>
-            </div>
-            <!--submit button-->
-            <div class="row">
-                <button class="btn waves-effect waves-light orange darken-4 center" type="submit">Add Review
-                    <i class="material-icons right"></i>
-                </button>
-            </div>
+<div class="row">
+  <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_review') }}">
+    <div class="card-panel white">
+
+      <!--restaurant name dropdown-->
+      <div class="row">
+        <div class="input-field col s12 black-text">
+          <select id="restaurant_name" name="restaurant_name" class="validate black-text" required>
+            <option value="" disabled selected>Pick your restaurant</option>
+            {% for restaurant in restaurants %}
+                <option value="{{ restaurant.restaurant_name }}">{{ restaurant.restaurant_name }}</option>
+            {% endfor %}
+          </select>
+          <label for="restaurant_name">Restaurant Name</label>
         </div>
-            </form>
-         
+      </div>
+
+      <!--rating score-->
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="score" type="text" class="validate" name="score" minlength="1" maxlength="1" pattern="^[0-5]{1,1}$" required />
+          <label for="score">Score (0-5)</label>
+        </div>
+      </div>
+
+      <!--review text-->
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="review_text" name="review_text" minlength="5" maxlength="350" class="materialize-textarea validate" required></textarea>
+          <label for="review_text">Review</label>
+        </div>
+      </div>
+
+      <!--submit button-->
+      <div class="row">
+        <button class="btn waves-effect waves-light orange darken-4 center" type="submit">
+          Add Review
+        </button>
+      </div>
     </div>
+  </form>
+</div>
 
 {% endblock %}

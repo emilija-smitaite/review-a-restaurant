@@ -1,91 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" 
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
     {% block styles %}
     {% endblock %}
     <title>The Alton Towers Foodie</title>
-</head>
-<body class="orange darken-2">
-    
+  </head>
+  <body class="orange darken-2">
     <header>
-        <!-- desktop navbar -->
-        <nav class="orange darken-4">
-            <div class="nav-wrapper">
-              <a href="{{ url_for('all_reviews') }}"  class="brand-logo"></a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-              <ul class="right hide-on-med-and-down">
-                {% if session.user %}
-                    <li><a href="{{ url_for('all_reviews') }}">All Reviews</a></li>
-                    <li><a href="{{ url_for('add_review') }}">Add Review</a></li>
-                    <li><a href="{{ url_for('my_reviews', username=session['user']) }}">My Reviews</a></li>
-                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                {% else %}
-                    <li><a href="{{ url_for('all_reviews') }}">All Reviews</a></li>
-                    <li><a href="{{ url_for('login') }}">Log In</a></li>
-                    <li><a href="{{ url_for('register') }}">Register</a></li>
-                {% endif %}
-              </ul>
-            </div>
-          </nav>
-        
-          <!-- mobile navbar -->
-          <ul class="sidenav orange darken-4" id="mobile-demo">
+      <!-- desktop navbar -->
+      <nav class="orange darken-4">
+        <div class="nav-wrapper">
+          <a href="{{ url_for('all_reviews') }}" class="brand-logo"></a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+          <ul class="right hide-on-med-and-down">
             {% if session.user %}
-                <li><a href="{{ url_for('all_reviews') }}">All Reviews</a></li>
-                <li><a href="{{ url_for('add_review') }}">Add Review</a></li>
-                <li><a href="{{ url_for('my_reviews', username=session['user']) }}">My Reviews</a></li>
-                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            <li><a href="{{ url_for('all_reviews') }}">All Reviews</a></li>
+            <li><a href="{{ url_for('add_review') }}">Add Review</a></li>
+            <li><a href="{{ url_for('my_reviews', username=session['user']) }}">My Reviews</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
-                <li><a href="{{ url_for('all_reviews') }}">All Reviews</a></li>
-                <li><a href="{{ url_for('login') }}">Log In</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a href="{{ url_for('all_reviews') }}">All Reviews</a></li>
+            <li><a href="{{ url_for('login') }}">Log In</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
           </ul>
+        </div>
+      </nav>
+
+      <!-- mobile navbar -->
+      <ul class="sidenav orange darken-4" id="mobile-demo">
+        {% if session.user %}
+        <li><a href="{{ url_for('all_reviews') }}">All Reviews</a></li>
+        <li><a href="{{ url_for('add_review') }}">Add Review</a></li>
+        <li><a href="{{ url_for('my_reviews', username=session['user']) }}">My Reviews</a></li>
+        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+        {% else %}
+        <li><a href="{{ url_for('all_reviews') }}">All Reviews</a></li>
+        <li><a href="{{ url_for('login') }}">Log In</a></li>
+        <li><a href="{{ url_for('register') }}">Register</a></li>
+        {% endif %}
+      </ul>
     </header>
+
     <div class="container">
-    <section>
+      <section>
         <!--flash messages-->
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="row">
-                        <h4>{{ message }}</h4>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </section>
-</div>
-    
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <div class="row">
+          <h4 class="white-text center-align">{{ message }}</h4>
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+      </section>
+    </div>
 
+    <main class="container">
+      {% block content %}
+      {% endblock %}
+    </main>
 
-    {% block content %}
-    {% endblock %}
-
+    <!-- footer -->
     <footer class="page-footer orange darken-4">
+      <div class="container"></div>
+      <div class="footer-copyright">
         <div class="container">
-        </div>
-        <div class="footer-copyright">
-          <div class="container">
-<span>© The Alton towers Resort</span>
+          <span>© The Alton towers Resort</span>
           <span class="right">This website is for educational purposes only</span>
-          
-          </div>
         </div>
-      </footer>
+      </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    {% block scripts %}
-    {% endblock %}
-
-</body>
+    {% block scripts %} {% endblock %}
+  </body>
 </html>

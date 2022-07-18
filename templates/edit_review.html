@@ -1,54 +1,72 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-    <h2 class="center-align white-text">Edit Review</h2>
+<h2 class="center-align white-text">Edit Review</h2>
 
+<div class="row">
+  <form class="col s12 m8 offset-m2 card-panel white" method="POST" action="{{ url_for('edit_review', review_id=review._id) }}">
+    
+    <!--restaurant name dropdown-->
     <div class="row">
-        <form class="col s12 m8 offset-m2 card-panel white" method="POST" action="{{ url_for('edit_review', review_id=review._id) }}">
-            <!--restaurant name dropdown-->
-            <div class="row">
-                <div class="input-field col s12 black-text">
-                    <select id="restaurant_name" name="restaurant_name" class="validate" required>
-                      <option value="" disabled>Pick your restaurant</option>
-                        {% for restaurant in restaurants %}
-                            {% if restaurant.restaurant_name == review.restaurant_name %}
-                                <option value="{{ restaurant.restaurant_name }}" selected>{{ restaurant.restaurant_name }}</option>
-                            {% else %}S
-                                <option value="{{ restaurant.restaurant_name }}">{{ restaurant.restaurant_name }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                    <label for="restaurant_name">Restaurant Name</label>
-                  </div>
-            </div>
-            <!--rating score-->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix"></i>
-                    <input id="score" type="text" class="validate" name="score" minlength="1" maxlength="1" pattern="^[0-5]{1,1}$" value="{{ review.score }}" required>
-                    <label for="score">Score (0-5)</label>
-                </div>
-            </div>
-            <!--review text-->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix"></i>
-                    <textarea id="review_text" name="review_text" minlength="5"
-                    maxlength="350" class="materialize-textarea validate" required>{{ review.review_text }}</textarea>
-                    <label for="review_text">Review</label>
-                </div>
-            </div>
-            <!--submit button-->
-            <div class="row">
-                <button class="btn waves-effect waves-light orange darken-4" type="submit">Edit
-                    <i class="material-icons right"></i>
-                </button>
-            <!--cancel button-->
-                <a class="btn waves-effect waves-light orange darken-4" href="{{ url_for('all_reviews') }}" type="submit">Cancel
-                    <i class="material-icons right"></i>
-                </a>
-            </div>
-        </form>
+      <div class="input-field col s12 black-text">
+        <select id="restaurant_name" name="restaurant_name" class="validate" required>
+            <option value="" disabled>
+                Pick your restaurant
+            </option>
+            {% for restaurant in restaurants %}
+                {% if restaurant.restaurant_name == review.restaurant_name %}
+                    <option value="{{ restaurant.restaurant_name }}" selected>
+                        {{ restaurant.restaurant_name }}
+                    </option>
+                {% else %}S
+                    <option value="{{ restaurant.restaurant_name }}">
+                        {{ restaurant.restaurant_name }}
+                    </option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <label for="restaurant_name">
+            Restaurant Name
+        </label>
+      </div>
     </div>
+
+    <!--rating score-->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix"></i>
+        <input id="score" type="text" class="validate" name="score" minlength="1" maxlength="1"
+        pattern="^[0-5]{1,1}$" value="{{ review.score }}" required />
+        <label for="score">
+            Score (0-5)
+        </label>
+      </div>
+    </div>
+
+    <!--review text-->
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="review_text" name="review_text" minlength="5" maxlength="350"
+            class="materialize-textarea validate" required>
+            {{ review.review_text }}
+        </textarea>
+        <label for="review_text">
+            Review
+        </label>
+      </div>
+    </div>
+
+    <!--submit button-->
+    <div class="row">
+      <button class="btn waves-effect waves-light orange darken-4" type="submit">
+        Edit
+      </button>
+
+      <!--cancel button-->
+      <a class="btn waves-effect waves-light orange darken-4" href="{{ url_for('all_reviews') }}" type="submit">
+        Cancel
+      </a>
+    </div>
+  </form>
+</div>
 
 {% endblock %}

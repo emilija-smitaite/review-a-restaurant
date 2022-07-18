@@ -1,3 +1,7 @@
 .dropdown-content li>span {
     color: black;
 }
+
+.sidenav li>a {
+    color: white;
+}

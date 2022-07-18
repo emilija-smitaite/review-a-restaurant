@@ -12,11 +12,11 @@
     {% endblock %}
     <title>The Alton Towers Foodie</title>
 </head>
-<body class="indigo darken-1">
+<body class="orange darken-2">
     
     <header>
         <!-- desktop navbar -->
-        <nav class="indigo darken-4">
+        <nav class="orange darken-4">
             <div class="nav-wrapper">
               <a href="{{ url_for('all_reviews') }}"  class="brand-logo"></a>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
@@ -36,7 +36,7 @@
           </nav>
         
           <!-- mobile navbar -->
-          <ul class="sidenav indigo darken-4" id="mobile-demo">
+          <ul class="sidenav orange darken-4" id="mobile-demo">
             {% if session.user %}
                 <li><a href="{{ url_for('all_reviews') }}">All Reviews</a></li>
                 <li><a href="{{ url_for('add_review') }}">Add Review</a></li>

@@ -2,9 +2,9 @@
 {% block content %}
 
     <h2 class="center-align white-text">The Alton Towers Foodie</h2>
+    <p class="center-align white-text">Review and discover your favorite places to eat at The Alton Towers Theme Park!</p>
     <h3 class="center-align white-text">Reviews</h3>
-    <h6 class="center-align white-text">Review and discover your favorite places to eat at The Alton Towers Theme Park!</h6>
-
+    
     <div class="row">
       {% for review in reviews %}
    
@@ -20,8 +20,8 @@
             {{ review.review_text }}<br>
             <strong>by: </strong>{{ review.posted_by }}<br>
             {% if session.user|lower == review.posted_by|lower %}
-              <a href="{{ url_for('edit_review', review_id=review._id) }}" class="waves-effect waves-light btn-small indigo darken-4">Edit</a>
-              <a href="{{ url_for('delete_review', review_id=review._id) }}" class="waves-effect waves-light btn-small indigo darken-4">Delete</a>
+              <a href="{{ url_for('edit_review', review_id=review._id) }}" class="waves-effect waves-light btn-small orange darken-4">Edit</a>
+              <a href="{{ url_for('delete_review', review_id=review._id) }}" class="waves-effect waves-light btn-small orange darken-4">Delete</a>
             {% endif %}
         </div>
       </div>

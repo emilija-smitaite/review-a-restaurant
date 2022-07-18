@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h2>Add Review</h2>
+
+    
+<h2 class="center-align white-text">Add Review</h2>
 
     <div class="row">
-        <form class="col s12" method="POST" action="{{ url_for('add_review') }}">
+     
+        <form class="col s12 m8 offset-m2 card-panel white" method="POST" action="{{ url_for('add_review') }}">
             <!--restaurant name dropdown-->
             <div class="row">
-                <div class="input-field col s12">
-                    <select id="restaurant_name" name="restaurant_name" class="validate" required>
+                <div class="input-field col s12 black-text">
+                    <select id="restaurant_name" name="restaurant_name" class="validate black-text" required>
                       <option value="" disabled selected>Pick your restaurant</option>
                         {% for restaurant in restaurants %}
                             <option value="{{ restaurant.restaurant_name }}">{{ restaurant.restaurant_name }}</option>
@@ -36,11 +39,13 @@
             </div>
             <!--submit button-->
             <div class="row">
-                <button class="btn waves-effect waves-light" type="submit">Add Review
+                <button class="btn waves-effect waves-light indigo darken-4 center" type="submit">Add Review
                     <i class="material-icons right"></i>
                 </button>
             </div>
-        </form>
+        
+            </form>
+         
     </div>
 
 {% endblock %}

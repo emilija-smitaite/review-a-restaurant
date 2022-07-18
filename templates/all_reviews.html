@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h2>Reviews</h2>
+    <h2 class="center-align white-text">Reviews</h2>
 
     <div class="row">
       {% for review in reviews %}
    
-      <div class="col s12 m3">
+      <div class="col s12 m4">
           <div class="card">
               <div class="card-image">
             <img name="{{ review.restaurant_name }}" alt="{{ review.restaurant_name }}"
@@ -18,8 +18,8 @@
             {{ review.review_text }}<br>
             <strong>by: </strong>{{ review.posted_by }}<br>
             {% if session.user|lower == review.posted_by|lower %}
-              <a href="{{ url_for('edit_review', review_id=review._id) }}" class="waves-effect waves-light btn-small">Edit</a>
-              <a href="{{ url_for('delete_review', review_id=review._id) }}" class="waves-effect waves-light btn-small">Delete</a>
+              <a href="{{ url_for('edit_review', review_id=review._id) }}" class="waves-effect waves-light btn-small indigo darken-4">Edit</a>
+              <a href="{{ url_for('delete_review', review_id=review._id) }}" class="waves-effect waves-light btn-small indigo darken-4">Delete</a>
             {% endif %}
         </div>
       </div>

@@ -12,13 +12,13 @@
     {% endblock %}
     <title>The Alton Towers Foodie</title>
 </head>
-<body>
-
+<body class="indigo darken-1">
+    
     <header>
         <!-- desktop navbar -->
-        <nav>
+        <nav class="indigo darken-4">
             <div class="nav-wrapper">
-              <a href="{{ url_for('all_reviews') }}" class="brand-logo">The Alton Towers Foodie</a>
+              <a href="{{ url_for('all_reviews') }}"  class="brand-logo"></a>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
               <ul class="right hide-on-med-and-down">
                 {% if session.user %}
@@ -36,7 +36,7 @@
           </nav>
         
           <!-- mobile navbar -->
-          <ul class="sidenav" id="mobile-demo">
+          <ul class="sidenav indigo darken-4" id="mobile-demo">
             {% if session.user %}
                 <li><a href="{{ url_for('all_reviews') }}">All Reviews</a></li>
                 <li><a href="{{ url_for('add_review') }}">Add Review</a></li>
@@ -49,6 +49,7 @@
             {% endif %}
           </ul>
     </header>
+    <div class="container">
     <section>
         <!--flash messages-->
         {% with messages = get_flashed_messages() %}
@@ -61,13 +62,17 @@
             {% endif %}
         {% endwith %}
     </section>
+
+
     {% block content %}
     {% endblock %}
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block scripts %}
     {% endblock %}
+</div>
 </body>
 </html>

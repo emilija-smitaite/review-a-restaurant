@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Login</h2>
+<h2 class="center-align white-text">Login</h2>
     <div class="row">
-        <form class="col s12 m5" method="POST" action="{{ url_for('login') }}">
-            <div class="card-panel teal">
+        <form class="col s12 m6 offset-m3" method="POST" action="{{ url_for('login') }}">
+            <div class="card-panel white">
                 <!-- username -->
                 <div class="row">
                     <div class="input-field col s6">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <!--login button-->
-                <button class="btn waves-effect waves-light" type="submit">Login
+                <button class="btn waves-effect waves-light indigo darken-4" type="submit">Login
                     <i class="material-icons right"></i>
                 </button>
             </div>

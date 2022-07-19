@@ -8,7 +8,7 @@
   <div class="row">
     {% for review in reviews %}
       {% if review.posted_by == session.user %}
-        <div class="col s12 m3">
+        <div class="col s12 m4">
           <div class="card">
             <div class="card-image">
               <img alt="{{ review.restaurant_name }}" src="static/images/{{ review.restaurant_name }}.jpg" />

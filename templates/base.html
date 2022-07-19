@@ -13,10 +13,10 @@
     {% endblock %}
     <title>The Alton Towers Foodie</title>
   </head>
-  <body class="orange darken-3">
+  <body class="deep-orange darken-4">
     <header>
       <!-- desktop navbar -->
-      <nav class="orange darken-4">
+      <nav class="deep-orange darken-4">
         <div class="nav-wrapper">
           <a href="{{ url_for('all_reviews') }}" class="brand-logo"></a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
@@ -36,7 +36,7 @@
       </nav>
 
       <!-- mobile navbar -->
-      <ul class="sidenav orange darken-4" id="mobile-demo">
+      <ul class="sidenav deep-orange darken-4" id="mobile-demo">
         {% if session.user %}
         <li><a href="{{ url_for('all_reviews') }}">All Reviews</a></li>
         <li><a href="{{ url_for('add_review') }}">Add Review</a></li>
@@ -67,7 +67,7 @@
     </main>
 
     <!-- footer -->
-    <footer class="page-footer orange darken-4">
+    <footer class="page-footer deep-orange darken-4">
       <div class="container"></div>
       <div class="footer-copyright">
         <div class="container">

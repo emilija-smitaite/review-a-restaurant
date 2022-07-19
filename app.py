@@ -20,14 +20,16 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/all_reviews")
 def all_reviews():
+    """Reads reviews collection"""
     reviews = list(mongo.db.reviews.find())
     return render_template("all_reviews.html", reviews=reviews)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """Inserts register dict to db as new doc in users collection"""
     if request.method == "POST":
-        #check if username already exists
+        # check if username already exists
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
@@ -38,8 +40,8 @@ def register():
         register = {
             "username": request.form.get("username").lower(),
             "email": request.form.get("email").lower(),
-            "password": generate_password_hash(request.form.get("password"))  
-        }
+            "password": generate_password_hash(request.form.get("password"))
+            }
         mongo.db.users.insert_one(register)
 
         # put the new user into "session" cookie
@@ -52,6 +54,7 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """Checks hatched password matches what the user has input"""
     if request.method == "POST":
         # check if username exists in the database
         existing_user = mongo.db.users.find_one(
@@ -60,7 +63,7 @@ def login():
         if existing_user:
             # ensure hatched password matches what the user has input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+                    existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome, {}".format(
                             request.form.get("username")))
@@ -82,21 +85,22 @@ def login():
 
 @app.route("/my_reviews/<username>", methods=["GET", "POST"])
 def my_reviews(username):
+    """Returns reviews that have matching username key"""
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
         reviews = list(mongo.db.reviews.find())
-        return render_template("my_reviews.html", username=username,
-            reviews=reviews)
+        return render_template("my_reviews.html",
+            username=username, reviews=reviews)
 
     return redirect(url_for("login"))
 
 
 @app.route("/logout")
 def logout():
-    # remove user from session cookies
+    """Removes user from session cookies"""
     flash("You have been logged out")
     session.clear()
     return redirect(url_for("login"))
@@ -104,6 +108,7 @@ def logout():
 
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
+    """Inserts review dictionary in to reviews collection"""
     if request.method == "POST":
         review = {
             "restaurant_name": request.form.get("restaurant_name"),
@@ -120,6 +125,7 @@ def add_review():
 
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
+    """Updates document in reviews collection """
     if request.method == "POST":
         submit = {
             "restaurant_name": request.form.get("restaurant_name"),
@@ -139,6 +145,7 @@ def edit_review(review_id):
 
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
+    """Deletes document in reviews collection"""
     mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
     flash("Review Successfully Deleted!")
     return redirect(url_for("all_reviews"))

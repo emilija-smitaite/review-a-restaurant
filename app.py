@@ -87,13 +87,12 @@ def login():
 def my_reviews(username):
     """Returns reviews that have matching username key"""
     # grab the session user's username from db
-    username = mongo.db.users.find_one(
+    un = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
         reviews = list(mongo.db.reviews.find())
-        return render_template("my_reviews.html",
-            username=username, reviews=reviews)
+        return render_template("my_reviews.html", username=un, reviews=reviews)
 
     return redirect(url_for("login"))
 
@@ -138,9 +137,8 @@ def edit_review(review_id):
         return redirect(url_for("all_reviews"))
 
     review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-    restaurants = mongo.db.restaurants.find().sort("restaurant_name", 1)
-    return render_template("edit_review.html", review=review,
-        restaurants=restaurants)
+    rest = mongo.db.restaurants.find().sort("restaurant_name", 1)
+    return render_template("edit_review.html", review=review, restaurants=rest)
 
 
 @app.route("/delete_review/<review_id>")

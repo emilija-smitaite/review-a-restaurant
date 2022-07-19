@@ -47,7 +47,7 @@ def register():
         # put the new user into "session" cookie
         session["user"] = request.form.get("username").lower()
         flash("Registered Successfully!")
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("add_review", username=session["user"]))
 
     return render_template("register.html")
 
@@ -152,4 +152,4 @@ def delete_review(review_id):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)

@@ -202,6 +202,23 @@ Adding / at the front of the file path made it into an absolute file path and ha
 
 ## Heroku
 The project was developed in Gitpod, pushed to GitHub, and then deployed on Heroku.
+You will need to create [Heroku](https://www.heroku.com) account.
+1. Create requirements.txt file using the command:  pip3 freeze --local > requirements.txt
+2. Create procfile using command: echo web: python app.py > Procfile
+Remove empty line if there is one.
+3. Commit those two files to Github
+4. Create a new app in Heroku by clicking "New", "Create New App", give it unique name.
+5. From the dashboard click "Deploy" then "Deployment Method", select "GitHub".
+6. Find your repo and connect.
+7. In the dashboard click "Settings" then "Reveal Config Vars"
+8. Set Config Vars:<br>
+IP - 0.0.0.0<br>
+MONGO_DBNAME - USER_MONGODB_NAME<br>
+MONGO_URI - USER_MONGODB_URI<br>
+PORT -   5000<br>
+Secret_Key - USER_SECRET_KEY<br>
+9. Back to "Deploy" section, click "Enable Automatic Deploys"
+10. Your app URL can be found at "Settings", "App Information", "Heroku git URL".
 
 ## MongoDB Atlas for Database Usage
 Mongo DB Atlas was used for the project's backend database functionality. <br>
@@ -221,6 +238,10 @@ By forking the GitHub Repository we make a copy of the original repository on ou
 5. Change the current working directory to the location where you want the cloned directory to be made.
 6. Type "git clone" and then paste the URL you copied in Step 3.
 7. Press Enter. Your local clone will be created.
+
+Technologies needed to be installed:
+- PIP3
+- Python3
 
 # Credits
 

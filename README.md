@@ -86,7 +86,7 @@ Delete Review
 4. Werkzeug
 - A Flask dependency. A web application library used for hashing user passwords for Python.
 5. Jinja
-- A F8lask dependency. Templating language is used to display data from the backend in HTML.
+- A Flask dependency. Templating language is used to display data from the backend in HTML.
 6. Pymongo and Flask-PyMongo
 - To connect Python and Flask to the MongoDB database
 7. jQuery
@@ -100,7 +100,7 @@ Delete Review
 11. Materialize:
 - Materialize was used to assist with the responsiveness and styling of the website.
 12. Font Awesome:
-- Font Awesome was used to style icons in the quiz outcome paragraph.
+- Font Awesome was used to style icons in the nav bar.
 13. Web Formatter:
 - Web Formatter was used to add proper indentation and improve readability on HTML files.
 
@@ -179,12 +179,15 @@ Database name: review_collector
 
 |Collection | Field            | Type     |
 |-----------|-----------------:|:--------:|
-|restaurants| restaurant_name  | string   |
-| reviews   | restaurant_name  | string   |
+|restaurants| _id              | ObjectId |
+|           | restaurant_name  | string   |
+| reviews   | _id              | ObjectId |
+|           | restaurant_name  | string   |
 |           | score            | string   |
 |           | review_text      | string   |
 |           | posted_by        | string   |
-| users     | username         | string   |
+| users     | _id              | ObjectId |
+|           | username         | string   |
 |           | email            | string   |
 |           | password         | string   |
 
@@ -192,9 +195,8 @@ Database name: review_collector
 
 1. Relative file path when displaying cover images in My Reviews:
 The relative file path was preventing the image from displaying. 
-Adding / at the front of the file path has stopped the issue.
+Adding / at the front of the file path made it into an absolute file path and had solved the issue.
 ![My Reviews Bug](static/images/bug-1.jpg)
-[Related Stack Overflow Post](https://stackoverflow.com/questions/53438861/jinja2-using-images-in-html/53438968#53438968)
 
 # Deployment
 
@@ -228,8 +230,6 @@ By forking the GitHub Repository we make a copy of the original repository on ou
 1. Code Institute Diploma in Web Development
 2. Used to find regular expression to validate email input when creating a new user.<br>
 https://regexlib.com/Search.aspx?k=email
-3. This Stack Overflow post to help fix file path issues.<br>
-https://stackoverflow.com/questions/53438861/jinja2-using-images-in-html/53438968#53438968
 
 ## Media 
 * Restaurant cover images were taken from the official Alton Towers website.[Theme Park](https://www.altontowers.com/explore/theme-park/restaurants-shops/), [CBeebies Land](https://www.altontowers.com/explore/cbeebies-land/restaurants-shops/) 
